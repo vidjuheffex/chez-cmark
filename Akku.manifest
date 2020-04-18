@@ -1,0 +1,15 @@
+#!r6rs ; -*- mode: scheme; coding: utf-8 -*-
+(import (akku format manifest))
+
+(akku-package ("chez-cmark" "1.0.0-alpha.0")
+              (synopsis "CommonMark FFI Bindings for Chez")
+              (authors "Julian Herrera")
+              (license "MIT")
+              (depends ("chez-srfi" ">=0.0.0-akku <1.0.0"))
+              (scripts
+               (cond-expand
+                (pre-install
+                 (run "curl https://github.com/commonmark/cmark/archive/0.29.0.tar.gz -L -s | tar -xvz && cd cmark-0.29.0 && make"))
+                (post-install
+                 (run "cd cmark-0.29.0;cp ./build/src/libcmark.so \"$akku_path_lib_ffi\"")))))
+
