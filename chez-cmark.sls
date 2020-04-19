@@ -3,7 +3,7 @@
 ;; SPDX-License-Identifier: MIT
 #!r6rs
 
-(library (commonmark-chez)
+(library (cmark)
   (export markdown->html)
 
   (import (chezscheme))
