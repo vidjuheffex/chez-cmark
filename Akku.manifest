@@ -9,4 +9,9 @@
               (scripts
                (cond-expand
                 (pre-install
-                 (run "test -f ./.akku/ffi/libcmark.so ||  curl https://github.com/commonmark/cmark/archive/0.29.0.tar.gz -L -s | tar -xvz && cd cmark-0.29.0 && make && cd cmark-0.29.0 && cp ./build/src/libcmark.so \"$akku_path_lib_ffi\"")))))
+                 (run
+                  "test -f ./.akku/ffi/libcmark.so || \
+curl https://github.com/commonmark/cmark/archive/0.29.0.tar.gz -L -s | tar -xvz && \
+cd cmark-0.29.0 && \
+make && \
+cp ./build/src/libcmark.so \"$akku_path_lib_ffi\" ")))))
